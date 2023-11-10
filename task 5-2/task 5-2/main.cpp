@@ -24,13 +24,37 @@ public:
 		}
 		delete[] _arr;
 	}
-	T* operator [](const int i)const { return _arr[i]; }
-	T* operator [](int i) { return _arr[i]; }
+	T* operator [](const int i)const 
+	{ 
+		if (i > _row - 1 || i < 0)
+		{
+			throw "BAD_INDEX!!!";
+		}
+		return _arr[i]; 
+
+	}
+	T* operator [](int i) 
+	{ 
+		if (i > _row - 1 || i < 0)
+		{
+			throw "BAD_INDEX!!!";
+		}
+		return _arr[i]; 
+	}
+
+	table& operator=(const table&) = delete;
 };
 
 int main() 
 {
-	auto test = table<int>(2, 3);
-	test[0][0] = 4;
-	std::cout << test[0][0];
+	try
+	{
+		auto test = table<int>(2, 3);
+		test[0][0] = 4;
+		std::cout << test[0][0];
+	}
+	catch (const char* e)
+	{
+		std::cout << e;
+	}
 }

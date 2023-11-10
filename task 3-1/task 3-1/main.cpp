@@ -2,13 +2,13 @@
 #include <vector>
 
 template<typename T>
-T square(T& x1)
+T square(T x1)
 {
-	return x1 * x1;
+	return x1 *= x1;
 }
 
 template<typename T>
-T square_vec(T& x1)
+std::vector <T> square(std::vector <T> x1)
 {
 	for (int i = 0; i != x1.size(); ++i)
 	{
@@ -19,9 +19,12 @@ T square_vec(T& x1)
 
 int main()
 {
+	std::vector <int> v2;
+	int x2 = 0;
 	int x1 = 4;
 	std::cout << "[IN]: " << x1 << std::endl;
-	std::cout << "[OUT]: " << square(x1) << std::endl;
+	x2 = square(x1);
+	std::cout << "[OUT]: " << x2 << std::endl;
 	std::vector <int> v1{-1, 4, 8};
 	std::cout << "[IN]: ";
 	for (const auto& i : v1)
@@ -29,8 +32,8 @@ int main()
 		std::cout << i << ", ";
 	}
 	std::cout << "\n[OUT]: ";
-	square_vec(v1);
-	for (const auto& i : v1)
+	v2 = square(v1);
+	for (const auto& i : v2)
 	{
 		std::cout << i << ", ";
 	}
