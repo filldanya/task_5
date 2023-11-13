@@ -43,13 +43,14 @@ public:
 	}
 
 	table& operator=(const table&) = delete;
+	table(const table&) = delete;
 };
 
 int main() 
 {
 	try
 	{
-		auto test = table<int>(2, 3);
+		table<int> test(2, 3);
 		test[0][0] = 4;
 		std::cout << test[0][0];
 	}
